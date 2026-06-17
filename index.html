@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. - Asistente Virtual Inteligente de Escritorio</title>
+    <meta name="description" content="Portal oficial de J.A.R.V.I.S. Asistente virtual modular de código abierto en Python para la automatización local mediante voz y detección de gestos por cámara.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fondo Holográfico HUD -->
+    <div class="hud-grid"></div>
+    <div class="glow-orb" id="orb-1"></div>
+    <div class="glow-orb" id="orb-2"></div>
+
+    <!-- Navegación -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">⚡ J.A.R.V.I.S.</a>
+            <ul class="nav-links">
+                <li><a href="#features">Tecnología</a></li>
+                <li><a href="#simulator">Simulador</a></li>
+                <li><a href="#gestures">Gestos</a></li>
+                <li><a href="#setup">Instalación</a></li>
+            </ul>
+            <a href="#download" class="btn btn-glow">Descargar</a>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <header class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge">PROYECTO DE AUTOMATIZACIÓN PYTHON</span>
+                <h1>Asistencia Inteligente a tu Medida</h1>
+                <p>J.A.R.V.I.S. es un asistente virtual modular de escritorio de código abierto. Te permite controlar tu computadora usando comandos de voz, gestos con la mano detectados por tu webcam y respuestas conversacionales rápidas con IA.</p>
+                <div class="hero-buttons">
+                    <a href="JARVIS.exe" download class="btn btn-primary">Descargar J.A.R.V.I.S (.exe)</a>
+                    <a href="#simulator" class="btn btn-secondary">Probar Simulador</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Reactor Arc CSS -->
+                <div class="arc-container">
+                    <div class="arc-ring outer-ring"></div>
+                    <div class="arc-ring mid-ring"></div>
+                    <div class="arc-ring inner-ring"></div>
+                    <div class="arc-hexagon"></div>
+                    <div class="arc-core"></div>
+                    <!-- Partículas Orbitales -->
+                    <div class="particle p1"></div>
+                    <div class="particle p2"></div>
+                </div>
+                <div class="reactor-status">
+                    <span class="status-dot"></span> SISTEMA STANDBY
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Características -->
+    <section id="features" class="section">
+        <h2 class="section-title">Características Clave</h2>
+        <p class="section-subtitle">Diseñado de forma modular para expandir sus capacidades de forma rápida y sencilla.</p>
+        
+        <div class="features-grid">
+            <div class="card card-feature">
+                <div class="card-icon">🖐️</div>
+                <h3>Reconocimiento de Gestos</h3>
+                <p>Interactúa físicamente con tu PC. Levanta tus dedos frente a tu cámara y abre programas como la calculadora o el bloc de notas sin tocar el mouse.</p>
+            </div>
+            <div class="card card-feature">
+                <div class="card-icon">🎙️</div>
+                <h3>Síntesis & Captura de Voz</h3>
+                <p>Díctale instrucciones en español. Jarvis procesa el audio localmente, ejecuta la automatización solicitada y te responde de viva voz de forma asíncrona.</p>
+            </div>
+            <div class="card card-feature">
+                <div class="card-icon">🧠</div>
+                <h3>Integración con Gemini IA</h3>
+                <p>Conecta a los modelos de lenguaje de Google Cloud. Jarvis adopta una personalidad inteligente, servicial y directa al responder tus dudas.</p>
+            </div>
+            <div class="card card-feature">
+                <div class="card-icon">🔌</div>
+                <h3>Sistema de Plugins</h3>
+                <p>Extiende sus comandos de forma sencilla. Hereda de la clase base en Python y añade automatizaciones personalizadas al registro del asistente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador -->
+    <section id="simulator" class="section section-dark">
+        <div class="section-container">
+            <h2 class="section-title">Simulador Virtual Interactivo</h2>
+            <p class="section-subtitle">Interactúa con esta demostración web en tiempo real para simular cómo respondería el asistente en tu PC.</p>
+
+            <div class="simulator-wrapper">
+                <!-- Chat HUD -->
+                <div class="simulator-chat">
+                    <div class="chat-header">
+                        <div class="chat-header-title">💻 J.A.R.V.I.S. TERMINAL</div>
+                        <div class="chat-header-badge" id="hud-badge">● STANDBY</div>
+                    </div>
+                    <div class="chat-body" id="chat-body">
+                        <div class="msg system">Sistemas cargados. Hola Stark, soy Jarvis. Listo para recibir tus comandos. Escribe /notepad para probar.</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Escribe un comando (/notepad, /calculator, /youtube)...">
+                        <button id="chat-send">Enviar</button>
+                    </div>
+                </div>
+
+                <!-- Monitor Virtual -->
+                <div class="simulator-desktop">
+                    <div class="desktop-header">PANTALLA VIRTUAL EN VIVO</div>
+                    <div class="desktop-screen" id="desktop-screen">
+                        <div class="desktop-empty-state">
+                            [ SISTEMA CENTRAL ]<br>
+                            Ingresa un comando en el chat de la izquierda para abrir pantallas en la PC virtual.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gestos -->
+    <section id="gestures" class="section">
+        <h2 class="section-title">Control Gestual Offline</h2>
+        <p class="section-subtitle">Pasa el cursor por encima de los botones para visualizar qué comando del sistema activa cada gesto en tu laptop.</p>
+        
+        <div class="gestures-container">
+            <div class="gesture-selector">
+                <div class="gesture-btn" data-finger="1">
+                    <span>☝️ 1 Dedo Levantado</span>
+                </div>
+                <div class="gesture-btn" data-finger="2">
+                    <span>✌️ 2 Dedos Levantados</span>
+                </div>
+                <div class="gesture-btn" data-finger="3">
+                    <span>🤟 3 Dedos Levantados</span>
+                </div>
+                <div class="gesture-btn" data-finger="4">
+                    <span>🍀 4 Dedos Levantados</span>
+                </div>
+                <div class="gesture-btn" data-finger="5">
+                    <span>🖐️ 5 Dedos Levantados</span>
+                </div>
+            </div>
+            <div class="gesture-display card">
+                <div class="gesture-graphic">
+                    <div class="gesture-hand-placeholder" id="hand-display">🖐️</div>
+                </div>
+                <div class="gesture-details">
+                    <h3 id="gesture-title">Inicializando sensor...</h3>
+                    <p id="gesture-desc">Pasa el mouse sobre el listado de gestos para conocer las acciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instalación paso a paso -->
+    <section id="setup" class="section section-dark">
+        <div class="section-container">
+            <h2 class="section-title">Cómo Instalar en tu PC</h2>
+            <p class="section-subtitle">Sigue estos sencillos pasos en tu consola para desplegar el asistente de forma local.</p>
+            
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <div class="step-num">1</div>
+                    <h4>Clonar Repositorio</h4>
+                    <div class="code-box">
+                        <code>git clone https://github.com/tu-usuario/jarvis.git</code>
+                    </div>
+                </div>
+                <div class="setup-step">
+                    <div class="step-num">2</div>
+                    <h4>Entorno Virtual</h4>
+                    <div class="code-box">
+                        <code>python -m venv venv<br>venv\Scripts\activate</code>
+                    </div>
+                </div>
+                <div class="setup-step">
+                    <div class="step-num">3</div>
+                    <h4>Instalar Librerías</h4>
+                    <div class="code-box">
+                        <code>pip install -r requirements.txt</code>
+                    </div>
+                </div>
+                <div class="setup-step">
+                    <div class="step-num">4</div>
+                    <h4>Ejecutar</h4>
+                    <div class="code-box">
+                        <code>python main.py</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Descarga -->
+    <section id="download" class="section download-banner">
+        <div class="download-container card">
+            <h2>Lleva el Control a tu Computadora</h2>
+            <p>Descarga la carpeta completa del proyecto. Incluye la interfaz gráfica con el reactor arc en Python, el control gestual y el nuevo asistente de inicio que configura tu API Key sin que toques una sola línea de código.</p>
+            <div class="download-actions">
+                <a href="JARVIS.exe" download class="btn btn-primary">Descargar J.A.R.V.I.S (.exe)</a>
+                <button class="btn btn-secondary" onclick="window.open('https://github.com/ValdiviaJ/jarvis')">Ver Código Fuente</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 J.A.R.V.I.S. Assistant - Diseñado en Python & Frontend Web.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
