@@ -3,219 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J.A.R.V.I.S. - Asistente Virtual Inteligente de Escritorio</title>
-    <meta name="description" content="Portal oficial de J.A.R.V.I.S. Asistente virtual modular de código abierto en Python para la automatización local mediante voz y detección de gestos por cámara.">
-    <!-- Google Fonts -->
+    <title>J.A.R.V.I.S. - Asistente Modular para Escritorio</title>
+    <meta name="description" content="Documentación, descarga y simulación de J.A.R.V.I.S., asistente virtual de escritorio en Python con control por voz, visión artificial y Gemini IA.">
+    <!-- Google Fonts: Inter para texto, Outfit para títulos y Fira Code para código -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Fondo Holográfico HUD -->
-    <div class="hud-grid"></div>
-    <div class="glow-orb" id="orb-1"></div>
-    <div class="glow-orb" id="orb-2"></div>
+    <!-- Red de fondo táctica sutil (No recargada) -->
+    <div class="background-grid"></div>
+    <div class="glow-backdrop-blue"></div>
+    <div class="glow-backdrop-cyan"></div>
 
-    <!-- Navegación -->
-    <nav class="glass-nav">
+    <!-- Barra de navegación premium minimalista -->
+    <nav class="nav-bar">
         <div class="nav-container">
-            <a href="#" class="logo">⚡ J.A.R.V.I.S.</a>
-            <ul class="nav-links">
-                <li><a href="#features">Tecnología</a></li>
-                <li><a href="#simulator">Simulador</a></li>
-                <li><a href="#gestures">Gestos</a></li>
-                <li><a href="#setup">Instalación</a></li>
-            </ul>
-            <a href="#download" class="btn btn-glow">Descargar</a>
+            <a href="#" class="nav-logo">
+                <span class="logo-accent">⚡</span> J.A.R.V.I.S.
+            </a>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Funciones</a>
+                <a href="#technical" class="nav-link">Arquitectura</a>
+                <a href="#simulator" class="nav-link">Simulador HUD</a>
+                <a href="#setup" class="nav-link">Instalación</a>
+            </div>
+            <a href="JARVIS.exe" download class="btn-nav-download">Descargar Executable</a>
         </div>
     </nav>
 
-    <!-- Sección Hero -->
+    <!-- Sección Hero: Presentación y Mockup de la App Real -->
     <header class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="badge">PROYECTO DE AUTOMATIZACIÓN PYTHON</span>
-                <h1>Asistencia Inteligente a tu Medida</h1>
-                <p>J.A.R.V.I.S. es un asistente virtual modular de escritorio de código abierto. Te permite controlar tu computadora usando comandos de voz, gestos con la mano detectados por tu webcam y respuestas conversacionales rápidas con IA.</p>
-                <div class="hero-buttons">
-                    <a href="JARVIS.exe" download class="btn btn-primary">Descargar J.A.R.V.I.S (.exe)</a>
-                    <a href="#simulator" class="btn btn-secondary">Probar Simulador</a>
+        <div class="hero-grid">
+            <div class="hero-info">
+                <div class="category-badge">Proyecto de Automatización Local</div>
+                <h1>Control de Escritorio Inteligente y Natural</h1>
+                <p class="hero-description">
+                    J.A.R.V.I.S. es un asistente virtual desarrollado en Python que combina reconocimiento de voz offline, visión artificial para control de gestos y modelos generativos de Gemini para crear un entorno de automatización fluido en Windows.
+                </p>
+                <div class="hero-action-buttons">
+                    <a href="JARVIS.exe" download class="btn btn-action-primary">Descargar J.A.R.V.I.S (.exe)</a>
+                    <a href="#simulator" class="btn btn-action-secondary">Abrir Simulador HUD</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <!-- Reactor Arc CSS -->
-                <div class="arc-container">
-                    <div class="arc-ring outer-ring"></div>
-                    <div class="arc-ring mid-ring"></div>
-                    <div class="arc-ring inner-ring"></div>
-                    <div class="arc-hexagon"></div>
-                    <div class="arc-core"></div>
-                    <!-- Partículas Orbitales -->
-                    <div class="particle p1"></div>
-                    <div class="particle p2"></div>
-                </div>
-                <div class="reactor-status">
-                    <span class="status-dot"></span> SISTEMA STANDBY
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Características -->
-    <section id="features" class="section">
-        <h2 class="section-title">Características Clave</h2>
-        <p class="section-subtitle">Diseñado de forma modular para expandir sus capacidades de forma rápida y sencilla.</p>
-        
-        <div class="features-grid">
-            <div class="card card-feature">
-                <div class="card-icon">🖐️</div>
-                <h3>Reconocimiento de Gestos</h3>
-                <p>Interactúa físicamente con tu PC. Levanta tus dedos frente a tu cámara y abre programas como la calculadora o el bloc de notas sin tocar el mouse.</p>
-            </div>
-            <div class="card card-feature">
-                <div class="card-icon">🎙️</div>
-                <h3>Síntesis & Captura de Voz</h3>
-                <p>Díctale instrucciones en español. Jarvis procesa el audio localmente, ejecuta la automatización solicitada y te responde de viva voz de forma asíncrona.</p>
-            </div>
-            <div class="card card-feature">
-                <div class="card-icon">🧠</div>
-                <h3>Integración con Gemini IA</h3>
-                <p>Conecta a los modelos de lenguaje de Google Cloud. Jarvis adopta una personalidad inteligente, servicial y directa al responder tus dudas.</p>
-            </div>
-            <div class="card card-feature">
-                <div class="card-icon">🔌</div>
-                <h3>Sistema de Plugins</h3>
-                <p>Extiende sus comandos de forma sencilla. Hereda de la clase base en Python y añade automatizaciones personalizadas al registro del asistente.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Simulador -->
-    <section id="simulator" class="section section-dark">
-        <div class="section-container">
-            <h2 class="section-title">Simulador Virtual Interactivo</h2>
-            <p class="section-subtitle">Interactúa con esta demostración web en tiempo real para simular cómo respondería el asistente en tu PC.</p>
-
-            <div class="simulator-wrapper">
-                <!-- Chat HUD -->
-                <div class="simulator-chat">
-                    <div class="chat-header">
-                        <div class="chat-header-title">💻 J.A.R.V.I.S. TERMINAL</div>
-                        <div class="chat-header-badge" id="hud-badge">● STANDBY</div>
+            <!-- Dashboard Mockup Interactivo: Representa el panel Tkinter de Jarvis -->
+            <div class="hero-showcase">
+                <div class="app-window-mockup">
+                    <div class="window-bar">
+                        <div class="window-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="window-title">J.A.R.V.I.S. Dashboard v1.2</div>
                     </div>
-                    <div class="chat-body" id="chat-body">
-                        <div class="msg system">Sistemas cargados. Hola Stark, soy Jarvis. Listo para recibir tus comandos. Escribe /notepad para probar.</div>
-                    </div>
-                    <div class="chat-input-area">
-                        <input type="text" id="chat-input" placeholder="Escribe un comando (/notepad, /calculator, /youtube)...">
-                        <button id="chat-send">Enviar</button>
-                    </div>
-                </div>
+                    <div class="window-body-grid">
+                        
+                        <!-- Panel de estadísticas (Izquierda) -->
+                        <div class="side-panel">
+                            <div class="panel-card">
+                                <span class="card-title">SYSTEM STATS</span>
+                                <div class="stat-row">
+                                    <div class="stat-info">
+                                        <span>CPU Usage</span>
+                                        <span class="stat-val">34%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-bar" style="width: 34%;"></div></div>
+                                </div>
+                                <div class="stat-row">
+                                    <div class="stat-info">
+                                        <span>RAM Usage</span>
+                                        <span class="stat-val">68%</span>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-bar" style="width: 68%;"></div></div>
+                                </div>
+                            </div>
 
-                <!-- Monitor Virtual -->
-                <div class="simulator-desktop">
-                    <div class="desktop-header">PANTALLA VIRTUAL EN VIVO</div>
-                    <div class="desktop-screen" id="desktop-screen">
-                        <div class="desktop-empty-state">
-                            [ SISTEMA CENTRAL ]<br>
-                            Ingresa un comando en el chat de la izquierda para abrir pantallas en la PC virtual.
+                            <div class="panel-card">
+                                <span class="card-title">WEATHER REPORT</span>
+                                <div class="weather-brief">
+                                    <span class="weather-temp">19°C</span>
+                                    <div class="weather-meta">
+                                        <span class="weather-city">Huacho</span>
+                                        <span class="weather-desc">Cielo despejado</span>
+                                    </div>
+                                </div>
+                                <div class="weather-extra">
+                                    <div><span>Humedad</span><strong>65%</strong></div>
+                                    <div><span>Viento</span><strong>12 km/h</strong></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reactor Arc HUD (Centro) -->
+                        <div class="hud-center">
+                            <div class="reactor-arc-visualizer">
+                                <div class="ring outer"></div>
+                                <div class="ring middle"></div>
+                                <div class="ring inner"></div>
+                                <div class="reactor-core-glow"></div>
+                            </div>
+                            <div class="badge-status-hud standby">
+                                <span class="pulse-indicator"></span> STANDBY
+                            </div>
+                        </div>
+
+                        <!-- Chat Log (Derecha) -->
+                        <div class="chat-panel">
+                            <div class="panel-card-chat">
+                                <span class="card-title">CONVERSATION LOG</span>
+                                <div class="chat-log-display">
+                                    <div class="chat-item jarvis">
+                                        <span class="chat-sender">JARVIS</span>
+                                        <p class="chat-text">Sistemas en línea, señor. Hoy es miércoles, 17 de junio. En Huacho hace 19°C. Estoy listo para recibir sus comandos.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Gestos -->
-    <section id="gestures" class="section">
-        <h2 class="section-title">Control Gestual Offline</h2>
-        <p class="section-subtitle">Pasa el cursor por encima de los botones para visualizar qué comando del sistema activa cada gesto en tu laptop.</p>
+    <!-- Sección Bento Grid: Desglose de Funcionalidades (Re-reading) -->
+    <section id="features" class="section">
+        <div class="section-header">
+            <h2>Funcionalidades del Sistema</h2>
+            <p>Una suite integrada de automatización local, control inteligente y hardware integrado.</p>
+        </div>
         
-        <div class="gestures-container">
-            <div class="gesture-selector">
-                <div class="gesture-btn" data-finger="1">
-                    <span>☝️ 1 Dedo Levantado</span>
-                </div>
-                <div class="gesture-btn" data-finger="2">
-                    <span>✌️ 2 Dedos Levantados</span>
-                </div>
-                <div class="gesture-btn" data-finger="3">
-                    <span>🤟 3 Dedos Levantados</span>
-                </div>
-                <div class="gesture-btn" data-finger="4">
-                    <span>🍀 4 Dedos Levantados</span>
-                </div>
-                <div class="gesture-btn" data-finger="5">
-                    <span>🖐️ 5 Dedos Levantados</span>
-                </div>
-            </div>
-            <div class="gesture-display card">
-                <div class="gesture-graphic">
-                    <div class="gesture-hand-placeholder" id="hand-display">🖐️</div>
-                </div>
-                <div class="gesture-details">
-                    <h3 id="gesture-title">Inicializando sensor...</h3>
-                    <p id="gesture-desc">Pasa el mouse sobre el listado de gestos para conocer las acciones.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instalación paso a paso -->
-    <section id="setup" class="section section-dark">
-        <div class="section-container">
-            <h2 class="section-title">Cómo Instalar en tu PC</h2>
-            <p class="section-subtitle">Sigue estos sencillos pasos en tu consola para desplegar el asistente de forma local.</p>
+        <div class="bento-grid">
             
-            <div class="setup-steps">
-                <div class="setup-step">
-                    <div class="step-num">1</div>
-                    <h4>Clonar Repositorio</h4>
-                    <div class="code-box">
-                        <code>git clone https://github.com/tu-usuario/jarvis.git</code>
+            <!-- Bento Item 1: Control Gestual -->
+            <div class="bento-item col-2 gesture-bento">
+                <div class="bento-icon">🖐️</div>
+                <div class="bento-content">
+                    <h3>Control por Gestos de la Mano (OpenCV)</h3>
+                    <p>
+                        A través de tu cámara web, el sistema detecta la presencia de tu mano y procesa los defectos de convexidad en tiempo real. Configura gestos de 1 a 5 dedos para disparar acciones rápidas como abrir programas del sistema, activar la escucha de voz o borrar el chat.
+                    </p>
+                    <div class="gesture-quick-preview">
+                        <span class="gesture-tag" data-preview="1">☝️ YouTube</span>
+                        <span class="gesture-tag" data-preview="2">✌️ Calculadora</span>
+                        <span class="gesture-tag" data-preview="3">🤟 Notas</span>
+                        <span class="gesture-tag" data-preview="4">🍀 Activar Mic</span>
+                        <span class="gesture-tag" data-preview="5">🖐️ Limpiar Chat</span>
                     </div>
                 </div>
-                <div class="setup-step">
-                    <div class="step-num">2</div>
-                    <h4>Entorno Virtual</h4>
-                    <div class="code-box">
-                        <code>python -m venv venv<br>venv\Scripts\activate</code>
-                    </div>
+            </div>
+
+            <!-- Bento Item 2: Procesamiento por Voz -->
+            <div class="bento-item speech-bento">
+                <div class="bento-icon">🎙️</div>
+                <div class="bento-content">
+                    <h3>Captura y Síntesis de Voz</h3>
+                    <p>
+                        Usa comandos hablados naturales en español procesados asíncronamente con <code>threading</code>. Jarvis captura tus solicitudes locales por micrófono y responde con síntesis TTS.
+                    </p>
                 </div>
-                <div class="setup-step">
-                    <div class="step-num">3</div>
-                    <h4>Instalar Librerías</h4>
-                    <div class="code-box">
-                        <code>pip install -r requirements.txt</code>
-                    </div>
+            </div>
+
+            <!-- Bento Item 3: Gemini IA -->
+            <div class="bento-item gemini-bento">
+                <div class="bento-icon">🧠</div>
+                <div class="bento-content">
+                    <h3>Inteligencia Artificial con Gemini</h3>
+                    <p>
+                        Un backend inteligente conectado a la API de Google. Mantiene memoria histórica contextualizada de tus últimas interacciones para chatear libremente.
+                    </p>
                 </div>
-                <div class="setup-step">
-                    <div class="step-num">4</div>
-                    <h4>Ejecutar</h4>
-                    <div class="code-box">
-                        <code>python main.py</code>
-                    </div>
+            </div>
+
+            <!-- Bento Item 4: Buscador Inteligente -->
+            <div class="bento-item file-bento">
+                <div class="bento-icon">🔍</div>
+                <div class="bento-content">
+                    <h3>Buscador Inteligente de Archivos</h3>
+                    <p>
+                        Realiza un barrido a profundidad 2 en carpetas clave (Documentos, Descargas, Escritorio, etc.), ordenando coincidencias por fecha de modificación para abrir de inmediato el archivo más reciente.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bento Item 5: Plugins Modulares -->
+            <div class="bento-item col-2 plugins-bento">
+                <div class="bento-icon">🔌</div>
+                <div class="bento-content">
+                    <h3>Arquitectura de Plugins Modulares</h3>
+                    <p>
+                        Todo comando de Jarvis es una clase que hereda de <code>BaseCommand</code> en <code>commands.py</code>. Esto permite agregar nuevos comandos y automatizaciones de forma totalmente limpia, simplemente definiendo palabras clave y una función lógica de ejecución.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Descarga -->
-    <section id="download" class="section download-banner">
-        <div class="download-container card">
-            <h2>Lleva el Control a tu Computadora</h2>
-            <p>Descarga la carpeta completa del proyecto. Incluye la interfaz gráfica con el reactor arc en Python, el control gestual y el nuevo asistente de inicio que configura tu API Key sin que toques una sola línea de código.</p>
-            <div class="download-actions">
-                <a href="JARVIS.exe" download class="btn btn-primary">Descargar J.A.R.V.I.S (.exe)</a>
-                <button class="btn btn-secondary" onclick="window.open('https://github.com/ValdiviaJ/jarvis')">Ver Código Fuente</button>
+    <!-- Sección Explicativa Técnica y Arquitectura del Código -->
+    <section id="technical" class="section section-technical">
+        <div class="technical-container">
+            <div class="section-header">
+                <h2>Detalles Técnicos y Arquitectura</h2>
+                <p>Análisis exhaustivo del flujo de datos, lógica algorítmica y archivos fuentes en Python.</p>
+            </div>
+
+            <div class="tech-layout">
+                
+                <!-- Navegación lateral para los módulos de código -->
+                <div class="tech-nav">
+                    <button class="tech-tab-btn active" data-tab="gesture-alg">Algoritmo de Visión (OpenCV)</button>
+                    <button class="tech-tab-btn" data-tab="voice-flow">Flujo de Voz Asíncrono</button>
+                    <button class="tech-tab-btn" data-tab="chatbot-router">Clasificación de Intenciones</button>
+                    <button class="tech-tab-btn" data-tab="file-search-algorithm">Algoritmo de Búsqueda</button>
+                    <button class="tech-tab-btn" data-tab="plugin-system-docs">Arquitectura de Plugins</button>
+                </div>
+
+                <!-- Paneles explicativos -->
+                <div class="tech-content-panels">
+                    
+                    <!-- Panel 1: OpenCV -->
+                    <div class="tech-panel active" id="gesture-alg">
+                        <h3>Detección y Reconocimiento de Gestos con OpenCV</h3>
+                        <p>
+                            El procesamiento de imágenes de la cámara web se ejecuta a una frecuencia de refresco de ~30 FPS usando Tkinter y OpenCV. Se utiliza un algoritmo basado en filtrado morfológico y defectos de convexidad para contar los dedos levantados de forma offline y sin sobrecargar la CPU.
+                        </p>
+                        <div class="tech-steps-list">
+                            <div class="tech-step-item">
+                                <strong>1. Filtro Espacial (ROI):</strong> Se extrae una Región de Interés en el lado derecho del visor (de un tamaño de 40% de ancho y 60% de alto de la resolución de cámara) para obligar al usuario a colocar la mano dentro de un área de detección estable.
+                            </div>
+                            <div class="tech-step-item">
+                                <strong>2. Umbralización de Piel (HSV):</strong> Se convierte el frame a espacio de color HSV y se aplica una máscara de rango <code>(H: [0, 20], S: [20, 255], V: [70, 255])</code> para aislar la silueta de la mano de forma robusta.
+                            </div>
+                            <div class="tech-step-item">
+                                <strong>3. Defectos de Convexidad:</strong> Se calcula el contorno más grande y su envolvente convexa. Los puntos de mayor desviación entre ambos se identifican como "defectos". Si el ángulo de separación entre dedos es menor a 90 grados y la profundidad es estable, se detecta un dedo levantado.
+                            </div>
+                            <div class="tech-step-item">
+                                <strong>4. Filtro de Estabilidad:</strong> Un comando solo se dispara si la cantidad de dedos se mantiene estable durante 15 frames consecutivos (~500ms) y tras superar un cooldown de ejecución de 2.5 segundos para evitar spam accidental.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Flujo de Voz -->
+                    <div class="tech-panel" id="voice-flow">
+                        <h3>Flujo de Voz Asíncrono</h3>
+                        <p>
+                            Para evitar congelar o bloquear el bucle principal de la interfaz gráfica en Tkinter, el procesamiento y captura de voz se maneja de manera asíncrona mediante subprocesos en paralelo (hilos con <code>threading</code>).
+                        </p>
+                        <div class="code-flow-diagram">
+                            <pre><code>[Usuario activa micrófono / Gesto de 4 dedos]
+                  │
+                  ▼
+   [Se crea un Thread en segundo plano]
+                  │
+                  ▼
+   [Captura de audio con SpeechRecognition]
+                  │
+                  ▼
+   [Transcripción offline/online en español]
+                  │
+                  ▼
+   [Procesamiento del comando por JarvisChatbot]
+                  │
+                  ▼
+    [Lectura del resultado por pyttsx3]
+                  │
+                  ▼
+  [Fin del Thread y retorno a estado STANDBY]</code></pre>
+                        </div>
+                        <p>
+                            Además, la inicialización del sistema carga de forma dinámica el día actual, la hora exacta, el saludo personalizado del asistente (Señor Stark) y recupera la temperatura meteorológica conectándose a los servidores del satélite, todo esto estructurando expresiones conversacionales naturales y fluidas en español.
+                        </p>
+                    </div>
+
+                    <!-- Panel 3: Clasificador de intenciones -->
+                    <div class="tech-panel" id="chatbot-router">
+                        <h3>Clasificador e Inteligencia de Respuestas</h3>
+                        <p>
+                            Jarvis procesa la entrada del usuario en base a tres niveles de prioridad dentro de <code>chatbot.py</code>:
+                        </p>
+                        <div class="priority-list">
+                            <div class="priority-item">
+                                <div class="priority-badge">Nivel 1</div>
+                                <div>
+                                    <strong>Modo Gemini IA (Online):</strong> Si el modo de Inteligencia Artificial está activo en el panel, la entrada se clasifica primero usando el modelo de Gemini. Se le provee una instrucción del sistema donde la IA decide entre ejecutar un comando nativo (ej. <code>ABRIR_NOTEPAD</code>, <code>ABRIR_CALCULADORA</code>) o conversar libremente con el usuario adoptando la personalidad de Jarvis.
+                                </div>
+                            </div>
+                            <div class="priority-item">
+                                <div class="priority-badge">Nivel 2</div>
+                                <div>
+                                    <strong>Enrutamiento Local Directo (Offline):</strong> Si no hay conexión o el Modo IA está desactivado, el comando pasa por expresiones regulares e inspección de palabras clave para buscar coincidencias lógicas simples como abrir el navegador, reproducir música o calcular operaciones matemáticas directamente mediante la API de Python.
+                                </div>
+                            </div>
+                            <div class="priority-item">
+                                <div class="priority-badge">Nivel 3</div>
+                                <div>
+                                    <strong>Fallback de Respaldo Local (Offline):</strong> Si la cuota API se agota (código HTTP 429), Jarvis redirige la consulta localmente a una búsqueda rápida en la enciclopedia de Wikipedia offline para resumir e informar al usuario usando TTS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Algoritmo de Búsqueda -->
+                    <div class="tech-panel" id="file-search-algorithm">
+                        <h3>Algoritmo de Búsqueda de Archivos Locales</h3>
+                        <p>
+                            El comando <code>/file &lt;consulta&gt;</code> permite abrir archivos en el disco duro usando coincidencia difusa en directorios comunes del sistema (como Descargas, Documentos y Escritorio).
+                        </p>
+                        <p>
+                            Para prevenir sobrecargas de rendimiento o tiempos de respuesta largos (típicos de búsquedas completas en disco), el algoritmo de búsqueda implementa las siguientes optimizaciones de rendimiento:
+                        </p>
+                        <ul>
+                            <li><strong>Profundidad Controlada:</strong> Utiliza el generador <code>os.walk()</code> limitando el recorrido del árbol de directorios a un nivel máximo de 2. Las ramas de subdirectorios que superan este nivel son purgadas en caliente durante el ciclo de búsqueda.</li>
+                            <li><strong>Ordenamiento por Modificación:</strong> Si se encuentran múltiples archivos que coinciden con el nombre buscado, la lista se ordena en base a la fecha de última edición del archivo <code>(os.path.getmtime)</code>, seleccionando y ejecutando el documento más recientemente modificado por el usuario.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Panel 5: Arquitectura de Plugins -->
+                    <div class="tech-panel" id="plugin-system-docs">
+                        <h3>Arquitectura de Plugins Modulares</h3>
+                        <p>
+                            El proyecto sigue un patrón de diseño orientado a objetos para sus comandos, aislando la lógica de ejecución del asistente de los comandos en sí. Para crear un nuevo comando, basta con escribir una clase sencilla en <code>commands.py</code>:
+                        </p>
+                        <pre><code class="language-python">class OpenFacebookCommand(BaseCommand):
+    @property
+    def keywords(self) -> List[str]:
+        # Palabras clave y comandos barra para activar
+        return ["abrir facebook", "abre facebook", "/facebook"]
+
+    @property
+    def description(self) -> str:
+        return "Abre Facebook en el navegador por defecto."
+
+    def execute(self, text_input: str, app_instance=None) -> str:
+        import webbrowser
+        webbrowser.open("https://www.facebook.com")
+        return "Abriendo Facebook, señor."</code></pre>
+                        <p>
+                            Posteriormente, en la función de inicialización del registro, agregas <code>registry.register(OpenFacebookCommand())</code> y el nuevo comando estará disponible tanto por consola, entrada de voz, como por intents de Inteligencia Artificial.
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Simulador Interactivo Completo del Dashboard HUD -->
+    <section id="simulator" class="section section-dark">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Simulador Interactivo del Dashboard HUD</h2>
+                <p>Interactúa directamente con este mockup web del panel de control de Jarvis. Puedes chatear, simular gestos y alternar entre los modos Local y Gemini IA.</p>
+            </div>
+
+            <!-- Interfaz del Simulador -->
+            <div class="simulator-hud-wrapper">
+                
+                <!-- HUD Sidebar (Información del Sistema) -->
+                <div class="sim-sidebar">
+                    <div class="sim-card">
+                        <div class="sim-card-header">MONITOR DE ESTADO</div>
+                        <div class="sim-stat">
+                            <div class="sim-stat-info"><span>CPU Usage</span><strong id="sim-cpu-text">15%</strong></div>
+                            <div class="sim-progress"><div class="sim-bar" id="sim-cpu-bar" style="width: 15%;"></div></div>
+                        </div>
+                        <div class="sim-stat">
+                            <div class="sim-stat-info"><span>RAM Usage</span><strong id="sim-ram-text">42%</strong></div>
+                            <div class="sim-progress"><div class="sim-bar" id="sim-ram-bar" style="width: 42%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="sim-card">
+                        <div class="sim-card-header">DATOS CLIMÁTICOS</div>
+                        <div class="sim-weather">
+                            <span class="sim-temp">19°C</span>
+                            <div>
+                                <h4 style="margin:0; font-size:1rem; color:var(--text-bright)">Huacho</h4>
+                                <p style="margin:0; font-size:0.8rem; color:var(--text-muted)">Cielo despejado</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sim-card">
+                        <div class="sim-card-header">ACCIONES DE GESTOS</div>
+                        <div class="sim-gestures-grid">
+                            <button class="sim-gesture-btn active" data-gesture="1">☝️ YouTube</button>
+                            <button class="sim-gesture-btn" data-gesture="2">✌️ Calculadora</button>
+                            <button class="sim-gesture-btn" data-gesture="3">🤟 Bloc Notas</button>
+                            <button class="sim-gesture-btn" data-gesture="4">🍀 Micrófono</button>
+                            <button class="sim-gesture-btn" data-gesture="5">🖐️ Limpiar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HUD Principal (Reactor Arc & Pantalla Virtual) -->
+                <div class="sim-main">
+                    
+                    <div class="sim-terminal-bar">
+                        <div class="sim-term-title">⚡ PANEL DE CONTROL CENTRAL</div>
+                        <div class="sim-term-status-badge standby" id="sim-status-badge">● STANDBY</div>
+                    </div>
+
+                    <div class="sim-body-display">
+                        <!-- El visualizador Arc animado -->
+                        <div class="sim-reactor-area">
+                            <div class="hud-reactor-circle" id="sim-reactor-ring">
+                                <div class="hud-inner-ring"></div>
+                                <div class="hud-hexagon"></div>
+                                <div class="hud-core"></div>
+                            </div>
+                            <div class="sim-control-bar">
+                                <button class="btn-ctrl-sim" id="btn-sim-cam">📷 CAM</button>
+                                <button class="btn-ctrl-sim btn-mic-accent" id="btn-sim-listen">🎙️ LISTEN</button>
+                                <button class="btn-ctrl-sim" id="btn-sim-kb">⌨️ FOCUS</button>
+                            </div>
+                        </div>
+
+                        <!-- Pantalla virtual del PC simulado -->
+                        <div class="sim-virtual-screen" id="sim-virtual-screen">
+                            <div class="empty-screen-text">
+                                [ MONITOR VIRTUAL DE ESCRITORIO ]<br>
+                                Ejecuta comandos barra o gestos para abrir aplicaciones simuladas en esta pantalla.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Entrada de Chat -->
+                    <div class="sim-terminal-chat">
+                        <div class="chat-messages-box" id="sim-chat-box">
+                            <div class="sim-msg sys">Sistemas cargados. Hola señor Stark, soy Jarvis. Listo para recibir tus comandos. Escribe /notepad o /calculator para iniciar.</div>
+                        </div>
+                        <div class="chat-input-controls">
+                            <button class="btn-toggle-ai" id="btn-toggle-ai-mode">🤖 LOCAL</button>
+                            <input type="text" id="sim-chat-input" placeholder="Escribe un comando (/notepad, /calculator, /youtube, /wikipedia, /gemini)...">
+                            <button class="btn-send-message" id="btn-sim-send">✈</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guía de Instalación Paso a Paso -->
+    <section id="setup" class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Guía de Instalación Rápida</h2>
+                <p>Configura y ejecuta J.A.R.V.I.S. en tu computadora localmente siguiendo estos sencillos comandos.</p>
+            </div>
+
+            <div class="installation-steps-grid">
+                <div class="install-step-card">
+                    <div class="step-badge">Paso 1</div>
+                    <h3>Clonar el código fuente</h3>
+                    <p>Clona el repositorio oficial de tu proyecto desde la terminal de Git.</p>
+                    <pre><code class="language-bash">git clone https://github.com/ValdiviaJ/jarvis.git
+cd jarvis</code></pre>
+                </div>
+
+                <div class="install-step-card">
+                    <div class="step-badge">Paso 2</div>
+                    <h3>Crear entorno virtual</h3>
+                    <p>Genera y activa el entorno virtual de desarrollo de Python para evitar conflictos.</p>
+                    <pre><code class="language-bash">python -m venv venv
+venv\Scripts\activate</code></pre>
+                </div>
+
+                <div class="install-step-card">
+                    <div class="step-badge">Paso 3</div>
+                    <h3>Instalar dependencias</h3>
+                    <p>Instala las librerías necesarias de visión por computadora y reconocimiento de voz.</p>
+                    <pre><code class="language-bash">pip install -r requirements.txt</code></pre>
+                </div>
+
+                <div class="install-step-card">
+                    <div class="step-badge">Paso 4</div>
+                    <h3>Ejecutar el Asistente</h3>
+                    <p>Corre el archivo principal para inicializar la GUI y configurar tu API Key.</p>
+                    <pre><code class="language-bash">python main.py</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
     <footer>
-        <p>&copy; 2026 J.A.R.V.I.S. Assistant - Diseñado en Python & Frontend Web.</p>
+        <div class="footer-content">
+            <p>&copy; 2026 J.A.R.V.I.S. Assistant - Proyecto Universitario de Automatización y Visión por Computadora.</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;">Desarrollado en Python 3.12, Tkinter, OpenCV y Gemini API.</p>
+        </div>
     </footer>
 
     <script src="app.js"></script>
