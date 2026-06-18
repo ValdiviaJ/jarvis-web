@@ -17,14 +17,11 @@ function initTechnicalTabs() {
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            // Remover active de botones y paneles
             tabs.forEach(t => t.classList.remove("active"));
             panels.forEach(p => p.classList.remove("active"));
 
-            // Activar botón seleccionado
             tab.classList.add("active");
 
-            // Activar panel correspondiente
             const targetId = tab.getAttribute("data-tab");
             const targetPanel = document.getElementById(targetId);
             if (targetPanel) {
@@ -39,21 +36,11 @@ function initTechnicalTabs() {
 // ----------------------------------------------------
 function initBentoGestures() {
     const tags = document.querySelectorAll(".gesture-tag");
-    const data = {
-        1: "☝️ Abre YouTube en tu navegador web por defecto mediante un comando subprocess.",
-        2: "✌️ Ejecuta calc.exe para abrir la calculadora de Windows.",
-        3: "🤟 Lanza notepad.exe de manera local en tu PC.",
-        4: "🍀 Activa el protocolo de escucha por micrófono (Speech Recognition) de forma asíncrona.",
-        5: "🖐️ Limpia el historial del chat de Tkinter y vacía la memoria de la API de Gemini."
-    };
 
     tags.forEach(tag => {
         tag.addEventListener("mouseenter", () => {
             tags.forEach(t => t.classList.remove("active"));
             tag.classList.add("active");
-            
-            // Si estuviéramos mostrando un tooltip dinámico, se actualizaría aquí.
-            const previewNum = tag.getAttribute("data-preview");
         });
     });
 }
@@ -87,7 +74,7 @@ function initSimulator() {
     let cameraActive = false;
     let isListening = false;
 
-    // Diccionario de respuestas locales simuladas
+    // Respuestas conversacionales (Sin emojis)
     const answers = {
         "hola": "Hola Stark. Sistemas cargados y en línea. ¿Qué comando desea ejecutar hoy?",
         "quien eres": "Soy J.A.R.V.I.S., el asistente virtual de Tony Stark. Fui desarrollado en Python 3.12 usando Tkinter y OpenCV.",
@@ -97,10 +84,10 @@ function initSimulator() {
         "ayuda": "Comandos disponibles: /notepad (Bloc de notas), /calculator (Calculadora), /youtube (Vídeos), /google (Buscador), /wikipedia [término], /file [archivo] o chatear libremente."
     };
 
-    // Actualizar estadísticas de sistema dinámicamente (cada 2.5s)
+    // Actualizar estadísticas de sistema dinámicamente
     setInterval(() => {
-        const cpuVal = Math.floor(Math.random() * 40) + 10;
-        const ramVal = Math.floor(Math.random() * 15) + 40;
+        const cpuVal = Math.floor(Math.random() * 30) + 10;
+        const ramVal = Math.floor(Math.random() * 10) + 50;
         
         cpuText.innerText = `${cpuVal}%`;
         cpuBar.style.width = `${cpuVal}%`;
@@ -109,7 +96,6 @@ function initSimulator() {
         ramBar.style.width = `${ramVal}%`;
     }, 2500);
 
-    // Funciones del HUD
     function appendMessage(sender, text) {
         const msg = document.createElement("div");
         msg.classList.add("sim-msg", sender.toLowerCase());
@@ -126,28 +112,27 @@ function initSimulator() {
         if (state === "escuchando") {
             reactorRing.style.borderColor = "var(--green)";
             reactorRing.style.animationDuration = "8s";
-            reactorCore.style.background = "radial-gradient(circle, #fff 10%, var(--green) 80%)";
-            reactorCore.style.boxShadow = "0 0 25px var(--green)";
+            reactorCore.style.background = "var(--green)";
+            reactorCore.style.boxShadow = "0 0 15px var(--green)";
         } else if (state === "procesando") {
             reactorRing.style.borderColor = "#f59e0b";
             reactorRing.style.animationDuration = "4s";
-            reactorCore.style.background = "radial-gradient(circle, #fff 10%, #f59e0b 80%)";
-            reactorCore.style.boxShadow = "0 0 25px #f59e0b";
+            reactorCore.style.background = "#f59e0b";
+            reactorCore.style.boxShadow = "0 0 15px #f59e0b";
         } else if (state === "hablando") {
-            reactorRing.style.borderColor = "var(--blue)";
+            reactorRing.style.borderColor = "#818cf8";
             reactorRing.style.animationDuration = "12s";
-            reactorCore.style.background = "radial-gradient(circle, #fff 10%, var(--blue) 80%)";
-            reactorCore.style.boxShadow = "0 0 25px var(--blue)";
+            reactorCore.style.background = "#818cf8";
+            reactorCore.style.boxShadow = "0 0 15px #818cf8";
         } else { // STANDBY
-            reactorRing.style.borderColor = "var(--cyan)";
+            reactorRing.style.borderColor = "var(--border-color-hover)";
             reactorRing.style.animationDuration = "25s";
-            reactorCore.style.background = "radial-gradient(circle, #fff 10%, var(--cyan) 80%)";
-            reactorCore.style.boxShadow = "0 0 15px var(--cyan)";
+            reactorCore.style.background = "var(--text-primary)";
+            reactorCore.style.boxShadow = "0 0 8px var(--primary)";
         }
     }
 
     function openSimWindow(title, type) {
-        // Limpiar pantalla anterior
         virtualScreen.innerHTML = "";
         
         const win = document.createElement("div");
@@ -164,7 +149,7 @@ function initSimulator() {
         content.classList.add("sim-window-content");
 
         if (type === "notepad") {
-            content.innerHTML = `<textarea class="notepad-txt" placeholder="Escribe notas de Windows aquí..." style="width:100%; height:100%; background:transparent; border:none; color:#fff; resize:none; outline:none; font-family:var(--font-mono);"></textarea>`;
+            content.innerHTML = `<textarea class="notepad-txt" placeholder="Escribe notas de Windows aquí..." style="width:100%; height:100%; background:transparent; border:none; color:#fff; resize:none; outline:none; font-family:var(--font-mono); font-size:0.8rem;"></textarea>`;
         } 
         else if (type === "calculator") {
             content.innerHTML = `
@@ -173,33 +158,33 @@ function initSimulator() {
                     <div class="calc-btn" onclick="document.getElementById('sim-calc-display').innerText = '15'">15</div>
                     <div class="calc-btn" onclick="document.getElementById('sim-calc-display').innerText = '30'">30</div>
                     <div class="calc-btn" onclick="document.getElementById('sim-calc-display').innerText = '+'">+</div>
-                    <div class="calc-btn" onclick="document.getElementById('sim-calc-display').innerText = '45'" style="background:var(--cyan); color:var(--bg-deep); font-weight:700;">=</div>
+                    <div class="calc-btn" onclick="document.getElementById('sim-calc-display').innerText = '45'" style="background:var(--primary); color:#fff; font-weight:700;">=</div>
                 </div>
             `;
         } 
         else if (type === "google") {
             content.innerHTML = `
-                <div class="iframe-mock" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:12px;">
-                    <div style="font-size:2.5rem;">🔍</div>
-                    <div style="font-weight:700;">Google Search</div>
-                    <div style="font-size:0.75rem; color:var(--text-muted)">Buscando en la web...</div>
+                <div class="iframe-mock" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:10px; color:var(--text-secondary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
+                    <div style="font-weight:700; font-size:0.9rem;">Google Search</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted)">Buscando consulta en internet...</div>
                 </div>
             `;
         } 
         else if (type === "youtube") {
             content.innerHTML = `
-                <div class="iframe-mock" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:12px; color:var(--red);">
-                    <div style="font-size:2.5rem;">▶️</div>
-                    <div style="font-weight:700; color:#fff;">YouTube</div>
-                    <div style="font-size:0.75rem; color:var(--text-muted)">Reproduciendo video...</div>
+                <div class="iframe-mock" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:10px; color:var(--red);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <div style="font-weight:700; color:#fff; font-size:0.9rem;">YouTube</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted)">Reproduciendo flujo de video...</div>
                 </div>
             `;
         }
         else if (type === "wikipedia") {
             content.innerHTML = `
-                <div style="padding:10px; font-family:sans-serif; line-height:1.4;">
-                    <h4 style="color:var(--cyan); margin-bottom:8px;">Wikipedia: Resumen de consulta</h4>
-                    <p style="font-size:0.8rem; color:var(--text-normal)">Wikipedia es una enciclopedia libre, políglota y editada de manera colaborativa. Es administrada por la Fundación Wikimedia...</p>
+                <div style="padding:10px; font-family:var(--font-sans); line-height:1.5;">
+                    <h4 style="color:var(--primary); margin-bottom:8px; font-size:0.9rem;">Resumen de Wikipedia</h4>
+                    <p style="font-size:0.75rem; color:var(--text-secondary)">Wikipedia es una enciclopedia libre, políglota y editada de manera colaborativa por voluntarios...</p>
                 </div>
             `;
         }
@@ -217,7 +202,6 @@ function initSimulator() {
         setTimeout(() => {
             changeHudState("hablando");
 
-            // Comprobar comandos barra
             if (query.startsWith("/notepad") || query.includes("bloc de notas")) {
                 appendMessage("JARVIS", "Abriendo el Bloc de Notas.");
                 openSimWindow("Bloc de Notas", "notepad");
@@ -246,10 +230,9 @@ function initSimulator() {
             }
             else if (query.startsWith("/exit") || query.includes("apagar")) {
                 appendMessage("JARVIS", "Apagando sistemas centrales. Adiós.");
-                virtualScreen.innerHTML = '<div class="empty-screen-text">[ SISTEMA CENTRAL SHUTDOWN ]</div>';
+                virtualScreen.innerHTML = '<div class="empty-screen-text">[ SISTEMA CENTRAL APAGADO ]</div>';
             }
             else {
-                // Respuestas conversacionales
                 let matched = false;
                 for (let key in answers) {
                     if (query.includes(key)) {
@@ -261,9 +244,9 @@ function initSimulator() {
 
                 if (!matched) {
                     if (aiModeActive) {
-                        appendMessage("JARVIS", `[Gemini 2.5 Flash]: Entendido, señor. He procesado su solicitud: "${text}". Para ejecutar esta instrucción directamente en su computadora real, configure su API Key en la aplicación de escritorio.`);
+                        appendMessage("JARVIS", `[Gemini]: Procesando consulta: "${text}". Para ejecutar esto en tu PC, configure su API Key en la aplicación de escritorio.`);
                     } else {
-                        appendMessage("JARVIS", "No poseo un comando local registrado para esa orden. Recuerde que puede activar el modo GEMINI (IA) en el panel inferior.");
+                        appendMessage("JARVIS", "No poseo un comando local registrado para esa orden. Recuerde que puede activar el modo GEMINI en el panel inferior.");
                     }
                 }
             }
@@ -284,7 +267,6 @@ function initSimulator() {
         processInput(text);
     }
 
-    // Eventos del Simulador
     chatSend.addEventListener("click", handleSend);
     chatInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") handleSend();
@@ -298,13 +280,13 @@ function initSimulator() {
         if (aiModeActive) {
             aiModeActive = false;
             btnToggleAi.classList.remove("gemini-mode");
-            btnToggleAi.innerText = "🤖 LOCAL";
-            appendMessage("SYSTEM", "Cambiando a modo de Comandos Locales (Offline).");
+            btnToggleAi.innerText = "BOT LOCAL";
+            appendMessage("SYSTEM", "Cambiando a modo de Comandos Locales.");
         } else {
             aiModeActive = true;
             btnToggleAi.classList.add("gemini-mode");
-            btnToggleAi.innerText = "⚡ GEMINI";
-            appendMessage("SYSTEM", "Conexión satélite Gemini IA establecida. Historial activo.");
+            btnToggleAi.innerText = "MODO GEMINI";
+            appendMessage("SYSTEM", "Conexión a Gemini establecida.");
         }
     });
 
@@ -321,13 +303,13 @@ function initSimulator() {
         } else {
             cameraActive = true;
             virtualScreen.innerHTML = `
-                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; background:#010204; border:1px solid var(--cyan); border-radius:8px;">
-                    <div style="color:var(--cyan); font-family:var(--font-mono); font-size:0.8rem; margin-bottom:10px;">[ CÁMARA ACTIVA - SENSOR DE GESTOS ]</div>
-                    <div style="font-size:3rem; animation: pulseEnergy 2s infinite;">🖐️</div>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; background:#050914; border:1px solid var(--border-color); border-radius:6px; width:90%; height:90%; margin:auto;">
+                    <div style="color:var(--primary); font-family:var(--font-mono); font-size:0.75rem; margin-bottom:10px;">[ CÁMARA ACTIVA - SENSOR DE GESTOS ]</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8c0 4 3 7 7 7h1c3.3 0 6-2.7 6-6v-3"/><path d="M6 14v-2a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4.7c0 3 2.3 5.3 5.3 5.3h.7"/></svg>
                     <div style="font-size:0.7rem; color:var(--text-muted); text-align:center; margin-top:10px;">ROI de detección establecido en 40% derecho</div>
                 </div>
             `;
-            appendMessage("SYSTEM", "Cámara web activa. Buscando mano en el ROI...");
+            appendMessage("SYSTEM", "Cámara web activa.");
         }
     });
 
@@ -342,7 +324,7 @@ function initSimulator() {
             const fakePhrases = [
                 "abre la calculadora",
                 "abrir bloc de notas",
-                "busca gatos graciosos en youtube",
+                "busca videos en youtube",
                 "quien eres tu"
             ];
             const chosen = fakePhrases[Math.floor(Math.random() * fakePhrases.length)];
@@ -351,7 +333,7 @@ function initSimulator() {
         }, 2500);
     });
 
-    // Simular gestos al hacer click en los botones laterales de gestos
+    // Simular gestos
     const gestureBtns = document.querySelectorAll(".sim-gesture-btn");
     gestureBtns.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -361,19 +343,19 @@ function initSimulator() {
             const gNum = parseInt(btn.getAttribute("data-gesture"));
             
             if (gNum === 1) {
-                appendMessage("SYSTEM", "[Gesto Detectado] 1 Dedo levantado.");
+                appendMessage("SYSTEM", "Gesto 1 detectado.");
                 processInput("/youtube");
             } else if (gNum === 2) {
-                appendMessage("SYSTEM", "[Gesto Detectado] 2 Dedos levantados.");
+                appendMessage("SYSTEM", "Gesto 2 detectado.");
                 processInput("/calculator");
             } else if (gNum === 3) {
-                appendMessage("SYSTEM", "[Gesto Detectado] 3 Dedos levantados.");
+                appendMessage("SYSTEM", "Gesto 3 detectado.");
                 processInput("/notepad");
             } else if (gNum === 4) {
-                appendMessage("SYSTEM", "[Gesto Detectado] 4 Dedos levantados.");
+                appendMessage("SYSTEM", "Gesto 4 detectado.");
                 btnListen.click();
             } else if (gNum === 5) {
-                appendMessage("SYSTEM", "[Gesto Detectado] 5 Dedos levantados.");
+                appendMessage("SYSTEM", "Gesto 5 detectado.");
                 chatBox.innerHTML = '<div class="sim-msg sys">Historial de chat y memoria reseteados.</div>';
             }
         });
